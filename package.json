@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/mlomelisa/liri/issues"
   },
-  "homepage": "https://github.com/mlomelisa/liri#readme"
+  "homepage": "https://github.com/mlomelisa/liri#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "dotenv": "^8.0.0"
+  }
 }
