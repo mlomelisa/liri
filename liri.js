@@ -2,7 +2,8 @@ require("dotenv").config();
 
 var keys = require("./keys.js");
 
-// var spotify = new Spotify(keys.spotify);
+
+
 
 var axios = require('axios');
 
@@ -10,15 +11,26 @@ var axios = require('axios');
 
 var action = process.argv[2];
 
+
+
 var concertThis = function() {
   var artist = process.argv[3];
 
- axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(
+  axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp&date=upcoming").then(
+//axios.get("https://rest.bandsintown.com/artists/the%20rolling%20stones/events?app_id=codingbootcamp&date=upcomming").then(
    function(response) {
-     console.log(response.data.venue)
+     
+     data = response.data;
+     for(let i=0; i< data.length; i++){
+       console.log(data[i])
+     }
    }
  )
 
+}// ConcertThis function
+
+var spotifyThisSong = function() {
+  var spotify = new Spotify(keys.spotify);
 }
 
 
