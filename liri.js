@@ -1,17 +1,10 @@
 require("dotenv").config();
 
 var keys = require("./keys.js");
-
-
-
-
 var axios = require('axios');
-
-
+var moment = require('moment');
 
 var action = process.argv[2];
-
-
 
 var concertThis = function() {
   var artist = process.argv[3];
@@ -22,7 +15,9 @@ var concertThis = function() {
      
      data = response.data;
      for(let i=0; i< data.length; i++){
-       console.log(data[i])
+       date = moment(data[i].datetime).format('MM/DD/YYYY')
+       console.log(data[i].venue.name + ', ' +data[i].venue.country + ', ' + date)
+       
      }
    }
  )
