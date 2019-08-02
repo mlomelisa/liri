@@ -5,12 +5,14 @@ var axios = require('axios');
 var moment = require('moment');
 var Spotify = require('node-spotify-api');
 
-var spotify = new Spotify(keys.spotify);  
+var SpotifyWebApi = require('spotify-web-api-node');
+
+// var spotifyApi = new SpotifyWebApi();
 
 var action = process.argv[2];
 var entryArray = []
 
-// Function concatenate entry
+// Function concatenate entry from Arguments 3 in advance.
 
 var ConcatenateEntry = function(){
   var entry = process.argv;
@@ -45,19 +47,32 @@ var concertThis = function() {
 
 
 // Function Spotify This Song
-var spotifyThisSong = function() {
-  var song = ConcatenateEntry();
-  song = song.join(' ');
-  console.log(song)
-  spotify.search({type: 'track', query: song}, function(err, data) {
-    if(err) {
-      return console.log('Error ocurred' + err);
-    }
-    console.log(data);
-  })
-}
-
-
+ var spotifyThisSong = function() {
+  // var spotifyApi = new SpotifyWebApi(keys.spotify); 
+     var spotify = new Spotify(keys.spotify);
+   var song = ConcatenateEntry();
+   song = song.join(' ');
+  
+  spotify.search({type: 'track', query: song, limit: 4})
+      .then(function(response) {
+        
+         var artist_name = response.tracks.items[0].artists[0].name;
+         var song_name = response.tracks.items[0].name;
+         var link_spotify = response.tracks.items[0].external_urls.spotify;
+         var album_name = response.tracks.items[0].album.name;
+        
+         console.log("\n")
+         console.log('Artist(s): ' + artist_name);
+         console.log('Song: ' + song_name);
+         console.log('Link: ' + link_spotify);
+         console.log('Album: ' + album_name)
+         console.log("\n")
+       })
+       .catch(function(err) {
+          console.log(err);
+   
+        });  
+  }
 // Function movieThis
 
 var movieThis = function(){
@@ -87,7 +102,7 @@ var movieThis = function(){
 }
 
 
-
+// Options for user
 
 switch (action) {
   case 'concert-this':
