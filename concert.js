@@ -3,6 +3,7 @@
 var keys = require("./keys.js");
 var moment = require('moment');
 var axios = require('axios');
+var fs = require("fs");
 
 
 // Function ConcertThis
@@ -23,12 +24,25 @@ var concertThis = function() {
     function(response) {
      
      data = response.data;
+     var concertData = [];
      console.log('Next Events: ')
      for(let i=0; i< data.length; i++){
        date = moment(data[i].datetime).format('MM/DD/YYYY')
        console.log(data[i].venue.name + ', ' +data[i].venue.country + ', ' + date)
        
+       concertData = data[i].venue.name + ', ' +data[i].venue.country + ', ' + date;
+
+       fs.appendFile('log.txt', concertData + '\n------------\n',
+       function(error){
+         if (error) {
+           throw error;
+         }
+       
+       });
      }
+   
+     
+
    }
  )
 }

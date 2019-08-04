@@ -1,6 +1,7 @@
 
 var Spotify = require('node-spotify-api');
 var keys = require("./keys.js");
+var fs = require("fs");
 
 // Function Spotify This Song
  var spotifyThisSong = function() {
@@ -18,21 +19,26 @@ var keys = require("./keys.js");
        spotify.search({type: 'track', query: song, limit: 1})
       .then(function(response) {
         
-        for (let i =0; i < response.tracks.items.length; i++){
-          
-          var artist_name = response.tracks.items[i].artists[0].name;
-          var song_name = response.tracks.items[i].name;
-          var link_spotify = response.tracks.items[i].external_urls.spotify;
-          var album_name = response.tracks.items[i].album.name;
+          var artist_name = response.tracks.items[0].artists[0].name;
+          var song_name = response.tracks.items[0].name;
+          var link_spotify = response.tracks.items[0].external_urls.spotify;
+          var album_name = response.tracks.items[0].album.name;
 
-          console.log("Item: " + i)
-          console.log('Artist(s): ' + artist_name);
-          console.log('Song: ' + song_name);
-          console.log('Link: ' + link_spotify);
-          console.log('Album: ' + album_name)
-          console.log("\n")
-                
-        }
+          var songData = [
+            'Artist(s): ' + artist_name,
+            'Song: ' + song_name,
+            'Link: ' + link_spotify,
+            'Album: ' + album_name
+          ].join('\n\n');
+        
+          fs.appendFile('log.txt', songData + '\n-------------\n',
+          function(error){
+            if (error) {
+              throw error;
+            }
+            console.log(songData)
+          });
+
          
        })
        .catch(function(err) {

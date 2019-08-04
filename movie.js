@@ -1,4 +1,5 @@
 var axios = require('axios');
+var fs = require("fs");
 
 // Function movieThis
 var movieThis = function(movie){ 
@@ -15,17 +16,26 @@ var movieThis = function(movie){
   axios.get("http://www.omdbapi.com/?t="+movie+"&y=&plot=short&apikey=trilogy").then(
   function(response) {
     // Then we print out the imdbRating
-    console.log("\n")
-    console.log("Title: " + response.data.Title)
-    console.log("Year: " + response.data.Year)
-    console.log("IMDB Rating: " + response.data.imdbRating)
-    console.log("Rotten Tomatoes Raiting: " + response.data.Ratings[1].Value)
-    console.log("Country: " + response.data.Country)
-    console.log("Language: " + response.data.Language)
-    console.log("Plot: " + response.data.Plot)
-    console.log("Actors: " + response.data.Actors)
-    console.log("\n")
-   
+    
+    var movieData = [
+      "Title: " + response.data.Title,
+      "Year: " + response.data.Year,
+      "IMDB Rating: " + response.data.imdbRating,
+      "Rotten Tomatoes Raiting: " + response.data.Ratings[1].Value,
+      "Country: " + response.data.Country,
+      "Language: " + response.data.Language,
+      "Plot: " + response.data.Plot,
+      "Actors: " + response.data.Actors
+    ].join('\n\n')
+
+    fs.appendFile('log.txt', movieData + '\n-----------\n',
+    function(error){
+      if (error) {
+        throw error;
+      }
+      console.log(movieData)
+    });
+
   }
 );
 
