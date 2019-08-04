@@ -15,4 +15,5 @@ To be able to run liri you need add a parameter of this list with a value to sea
   - Will run the action as follows the text in random.txt
 
 ### GitHub link
-
+https://github.com/mlomelisa/liri - automatic!
+[GitHub](https://github.com/mlomelisa/liri)
