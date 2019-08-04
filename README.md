@@ -8,33 +8,33 @@ LIRI use node.js to run different modules. Each action runs in a separate module
 
 To be able to run liri you need add a parameter of this list with a value to search:
 
-* concert-this <band/artist>
-* spotify-this-song <song>
-* movie-this <movie>
-* do-what-it-says
-  - Will run the action as follows the text in random.txt
+  * concert-this <band/artist>
+  * spotify-this-song <song>
+  * movie-this <movie>
+  * do-what-it-says
+    - Will run the action as follows the text in random.txt
 
-  If user decide enter an action witout a value, will search for the default:
+If user decide enter an action witout a value, will search for the default:
 
-* concert-this **"The Killers"**
-* spotify-this-song **"The Sign"**
-* movie-this **"Reservoir Dogs"**
+  * concert-this **"The Killers"**
+  * spotify-this-song **"The Sign"**
+  * movie-this **"Reservoir Dogs"**
 
 
 ### [GitHub](https://github.com/mlomelisa/liri) link
 
 ### Technologies
 
-*Node-Spotify-API
-*Axios
-*Moment
-*DotEnv
-*fs
+* Node-Spotify-API
+* Axios
+* Moment
+* DotEnv
+* fs
 
 ### APIs
-*OMDB
-*Bands In Town
-*Spotify
+* OMDB
+* Bands In Town
+* Spotify
 
 ### Log
 
