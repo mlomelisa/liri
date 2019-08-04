@@ -41,3 +41,6 @@ In case user do not submit any action, by default will run **do-what-it-says**.
 ### Log
 
 Saving session in log.txt
+
+### Recorder session using Application
+https://drive.google.com/file/d/1kwaOHPwYuVRxl5yigI5K21QIHZak_L47/view
