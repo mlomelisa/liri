@@ -20,6 +20,8 @@ If user decide enter an action witout a value, will search for the default:
   * spotify-this-song **"The Sign"**
   * movie-this **"Reservoir Dogs"**
 
+In case user do not submit any action, by default will run **do-what-it-says**.
+
 
 ### [GitHub](https://github.com/mlomelisa/liri) link
 

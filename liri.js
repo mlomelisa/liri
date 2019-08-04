@@ -20,6 +20,9 @@ var doThis =  new doWhatItSaysFunc();
 
 // Options for user
 
+if (!action){
+  action = 'do-what-it-says'
+}
 
  switch (action) {
 
